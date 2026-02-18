@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>INITIATE SESSION</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">LOGIN</button>
+        </form>
+    </div>
+
+    <div class="divider" style="font-size: 2rem; color: #333;">//</div>
+
+    <div class="auth-box">
+        <h2>NEW RECRUIT</h2>
+        <form method="POST" action="{{ url_for('register') }}">
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="username" placeholder="Choose Username" required>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="password" name="password" placeholder="Choose Password" required>
+            </div>
+            <button type="submit" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">REGISTER</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

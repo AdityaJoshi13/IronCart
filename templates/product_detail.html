@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 4rem; text-align: center;">
+    <h1>{{ product.name }}</h1>
+    <img src="{{ url_for('static', filename='images/' + product.image_file) }}" style="max-width: 400px; border: 1px solid var(--accent);">
+    <p style="margin-top: 20px; font-size: 1.2rem;">{{ product.description }}</p>
+    <h2 style="color: var(--accent);">₹{{ product.price }}</h2>
+    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" style="background: white; color: black; padding: 10px 20px; text-decoration: none; font-weight: bold;">ADD TO CART</a>
+</div>
+{% endblock %}

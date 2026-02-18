@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronCart | Elite Gym Gear</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">IRON<span style="color:var(--accent)">CART</span></div>
+        <div class="nav-links">
+    <a href="{{ url_for('home') }}">HOME</a>
+    
+    {% if current_user.is_authenticated %}
+        {% if current_user.is_admin %}
+            <a href="{{ url_for('admin_dashboard') }}" style="color: red; border: 1px solid red; padding: 5px 10px;">ADMIN PANEL</a>
+        {% endif %}
+        
+        <a href="{{ url_for('cart') }}">CART 🛒</a>
+        <a href="{{ url_for('logout') }}">LOGOUT</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">LOGIN / JOIN</a>
+    {% endif %}
+</div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2026 IronCart. Forge Your Legacy.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

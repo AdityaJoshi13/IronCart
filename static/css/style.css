@@ -1,0 +1,238 @@
+/* Hacker/Dark Aesthetic */
+:root {
+    --bg-color: #050505;
+    --card-bg: #111111;
+    --accent: #00ff88; /* Neon Green for contrast */
+    --text-main: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Courier New', monospace; /* Tech vibe */
+    margin: 0;
+}
+
+/* Navbar */
+/* --- UPDATED NAVBAR (Larger Fonts & More Space) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem; /* More breathing room */
+    background: rgba(0,0,0,0.95);
+    border-bottom: 1px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 50px;       /* INCREASED SPACING */
+    font-size: 1.3rem;       /* INCREASED FONT SIZE */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    text-shadow: var(--accent-glow);
+}
+
+
+/* --- LOGO STYLES --- */
+.logo {
+    font-size: 3rem;       /* Makes IRONCART huge */
+    font-weight: 800;      /* Extra Bold */
+    letter-spacing: 4px;   /* Spaced out for a premium look */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Subtle glow */
+    font-family: 'Orbitron', sans-serif; /* Uses the sci-fi font */
+    color: white;          /* Ensures it is white by default */
+    text-decoration: none; /* Removes underline if it's a link */
+}
+
+
+/* --- REALISTIC LIFTING ANIMATION --- */
+@keyframes realLift {
+    0% { transform: translateY(0) scale(1); }        /* Ready */
+    15% { transform: translateY(5px) scale(0.98); }  /* Crouch/Prep */
+    50% { transform: translateY(-40px) scale(1.1); } /* Explosive Lift */
+    70% { transform: translateY(-40px) scale(1.1); } /* Hold at top */
+    100% { transform: translateY(0) scale(1); }      /* Drop */
+}
+
+.lifter-icon {
+    font-size: 8rem; /* BIGGER ICON */
+    display: inline-block;
+    animation: realLift 3s infinite ease-in-out; /* Slower, more realistic timing */
+    margin-bottom: 20px;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    transition: transform 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+/* Fixed Image Sizing */
+.product-img {
+    width: 100%;
+    height: 250px;       /* Fixed height */
+    object-fit: cover;   /* Ensures image covers area without distortion */
+    object-position: center;
+}
+
+/* Hero Section with Animation */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+}
+
+.gym-line {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 20px;
+}
+
+/* Simple CSS Animation for "Lifting" */
+@keyframes lift {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* --- HERO GIF ANIMATION --- */
+.lifter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-gif {
+    width: 300px;           /* Make him BIG */
+    height: auto;           /* Keep aspect ratio */
+    filter: drop-shadow(0 0 15px #00ff88); /* Neon Green "Kryptonite" Glow */
+    transition: transform 0.3s ease;
+}
+
+.hero-gif:hover {
+    transform: scale(1.1);  /* He gets bigger when you hover over him */
+    filter: drop-shadow(0 0 25px #00ff88); /* Glow gets intense */
+}
+/* --- UPDATED HERO SECTION --- */
+.hero {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+}
+
+.hero p {
+    font-size: 1.5rem;        /* Increased size (was default) */
+    color: #888;              /* Slight grey for "Elite" look */
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* --- UPDATED COMPACT PRODUCT GRID --- */
+.product-grid {
+    display: grid;
+    /* Reduced min-width from 280px to 240px for tighter cards */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid #222;    /* Subtle border for cleaner look */
+    border-radius: 8px;        /* Slightly more rounded */
+    overflow: hidden;
+    transition: all 0.3s ease; /* Smoother transition */
+}
+
+.product-card:hover {
+    transform: translateY(-3px); /* Reduced movement (was -5px) */
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Added shadow for depth */
+}
+
+/* Smaller Image Container */
+.img-container {
+    width: 100%;
+    height: 180px;            /* REDUCED height (was 250px) */
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid #222;
+}
+
+.card-details {
+    padding: 1rem;            /* Reduced padding (was 1.5rem) */
+}
+
+.card-details h3 {
+    font-size: 1.1rem;        /* Slightly smaller title */
+    margin: 0 0 5px 0;
+}
+
+.card-details p {
+    font-size: 0.85rem;       /* Cleaner description text */
+    color: #888;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+/* --- IMPROVED CART TABLE SPACING --- */
+.cart-table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse; /* Ensures borders are clean */
+}
+
+.cart-table th, .cart-table td {
+    padding: 1.5rem;          /* This adds the big GAP you need */
+    text-align: left;         /* Aligns text cleanly to the left */
+    border-bottom: 1px solid #333;
+}
+
+.cart-table th {
+    color: var(--accent);     /* Neon green headers */
+    font-size: 1.1rem;        /* Slightly larger headers */
+    letter-spacing: 1px;
+}
+
+.cart-table td {
+    font-size: 1rem;
+    color: #ccc;
+}

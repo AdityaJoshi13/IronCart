@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="cart-wrapper" style="padding: 2rem;">
+    <h1>YOUR ARSENAL</h1>
+    
+    {% if cart %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>GEAR</th>
+                    <th>QTY</th>
+                    <th>UNIT PRICE</th>
+                    <th>TOTAL</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="{{ url_for('static', filename='images/' + item.product.image_file) }}" style="width:50px; height:50px; object-fit:cover; border-radius:4px;">
+                            {{ item.product.name }}
+                        </div>
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₹{{ item.product.price }}</td>
+                    <td style="color:var(--accent);">₹{{ item.product.price * item.quantity }}</td>
+                    <td>
+                        <a href="{{ url_for('delete_item', item_id=item.id) }}" class="delete-btn" style="color:red; text-decoration:none; font-weight:bold;">[REMOVE]</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="checkout-section">
+            <h2 class="total">GRAND TOTAL: <span style="color:var(--accent)">₹{{ total }}</span></h2>
+            
+            <form action="{{ url_for('cart') }}" method="POST">
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ key_id }}"
+                    data-amount="{{ total * 100 }}" 
+                    data-currency="INR"
+                    data-name="IronCart"
+                    data-description="Gym Equipment Purchase"
+                    data-image="https://cdn-icons-png.flaticon.com/512/3043/3043224.png"
+                    data-prefill.name="{{ current_user.username }}"
+                    data-theme.color="#00ff88">
+                </script>
+                <input type="hidden" name="payment_success" value="true">
+            </form>
+        </div>
+
+    {% else %}
+        <div class="empty-cart" style="text-align:center; margin-top:50px;">
+            <p style="font-size:1.5rem; color:#555;">Your cart is empty.</p>
+            <br>
+            <a href="{{ url_for('home') }}" style="background:var(--accent); color:black; padding:15px 30px; text-decoration:none; font-weight:bold;">START SHOPPING</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

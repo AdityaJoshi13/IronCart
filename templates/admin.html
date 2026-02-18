@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 2rem;">
+    <h1 style="color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px;">
+        COMMAND CENTER [ADMIN]
+    </h1>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+        
+        <div style="background: #111; padding: 1rem; border: 1px solid #333;">
+            <h2 style="color: white;">REGISTERED USERS</h2>
+            <table style="width: 100%; color: #aaa; margin-top: 10px; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 1px solid #444; text-align: left;">
+                        <th>ID</th>
+                        <th>USERNAME</th>
+                        <th>ROLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr style="border-bottom: 1px solid #222;">
+                        <td style="padding: 8px;">{{ user.id }}</td>
+                        <td style="padding: 8px;">{{ user.username }}</td>
+                        <td style="padding: 8px; color: {{ 'var(--accent)' if user.is_admin else 'white' }}">
+                            {{ 'ADMIN' if user.is_admin else 'USER' }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background: #111; padding: 1rem; border: 1px solid #333;">
+            <h2 style="color: white;">INVENTORY STATUS</h2>
+            <ul style="list-style: none; padding: 0; color: #aaa;">
+                {% for product in products %}
+                <li style="padding: 8px; border-bottom: 1px solid #222; display: flex; justify-content: space-between;">
+                    <span>{{ product.name }}</span>
+                    <span style="color: var(--accent);">₹{{ product.price }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
